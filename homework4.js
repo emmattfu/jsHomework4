@@ -1,7 +1,8 @@
 // Задача № 1
 
-function multiply() {
-    if (isNaN(arguments)) return 0;
+function multiply(num) {
+    if (isNaN(num)) return 0;
+    num = Number(num);
     let res = 1;
     for (let i = 0; i < arguments.length; i++) {
        res *= arguments[i];
@@ -50,8 +51,8 @@ function addTask(text) {
 
     // Create new task obj
     const newTask = {
-        id: todos.length,
-        text
+        text,
+        id: todos.length
     };
 
     // Add new task
@@ -76,4 +77,22 @@ function deleteTask(id) {
     }
 
     return todo || 'task not found';
+}
+
+function editTask(newText, id) {
+    if (typeof newText !== 'string') return new Error('text is not a string');
+    if (!newText.length) return new Error('text empty');
+    if (id !== 0 && !id) return new Error('id required');
+    if (isNaN(id)) return new Error('id must be a number');
+    id = Number(id);
+
+    let todo;
+
+    for (let i = 0; i < todos.length; i++) {
+        if (todos[i].id === id) {
+            todo = todos[i];
+            todo.text = newText;
+        }
+    }
+    return todos;
 }

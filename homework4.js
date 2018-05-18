@@ -13,8 +13,7 @@ function multiply(num) {
 // Задача № 3
 
 function reverseString(string) {
-    if (typeof string !== 'string') return new Error('Not a string');
-    if (!text.length) return new Error('text empty');
+    if (typeof string !== 'string') return new Error('Not a string'); // я так понимаю проверку на пусткую строку делать не нужно ведь будет ошибка в цикле при пустой строке
     let str = '';
     for (let i = 1; i <= string.length; i++) {
         str += string[string.length - i];
@@ -24,6 +23,7 @@ function reverseString(string) {
 
 // Задача № 4
 function getCodeStringFromText(string) {
+    if (typeof string !== 'string') return new Error('Not a string');
     let stringFromText = '';
     for (let i = 0; i < string.length; i++) {
         stringFromText += string.charCodeAt(i) + ' ';
